@@ -3,17 +3,18 @@ class Student:
         self.students = []  # Initialize an empty list to store student names
 
     def add_student(self, student_name):
-        self.students.append(student_name)  # Add a student to the list
+        self.students.append((student_name,False))  # Add a student to the list
 
     def mark_attendance(self, student_name):
-        for i, student in enumerate(self.students):
+        for i, (student, attendance_status) in enumerate(self.students):
             if student == student_name:
-                self.students[i] = (student, True)  # Mark attendance as True for the student
+                self.students[i] = (student,True)  # Mark attendance as True for the student
 
     def display_attendance(self):
         for student, attendance_status in self.students:
             status = "Present" if attendance_status else "Absent"
             print(f"{student}: {status}")
+
 
 def main():
     stud = Student()
@@ -37,6 +38,7 @@ def main():
             stud.display_attendance()
         elif option == "4":
             break
+
 
 if __name__ == "__main__":
     main()
